@@ -18,7 +18,7 @@ const CategoryFilterPage = () => {
 
   async function getProfile() {
     try {
-      let result = await axios.get(`https://actl.co.in/shop/getProduct`);
+      let result = await axios.get(`https://actl.co.in/sikha/getProduct`);
       if (result) {
         let x = '';
         for (let i = 1; i <= result.data[0].productRating; i++) {
@@ -64,7 +64,7 @@ const CategoryFilterPage = () => {
 
   async function getAllProfile() {
     try {
-      let result = await axios.get('https://actl.co.in/shop/getProduct');
+      let result = await axios.get('https://actl.co.in/sikha/getProduct');
       if(result){
         const final = result.data.map(item => {
           if ((typeof item.productImages === 'string') && (typeof item.productSize === 'string')) {
@@ -116,7 +116,7 @@ const CategoryFilterPage = () => {
         {product.productImages.map(slide => (
           <SwiperSlide key={slide.id}>
             <img
-              src={`https://actl.co.in/uploads/${slide}`}
+              src={`https://actl.co.in/sikha_uploads/${slide}`}
               alt={`Slide ${slide.id}`}
               className="w-full h-72 object-fit"
             />

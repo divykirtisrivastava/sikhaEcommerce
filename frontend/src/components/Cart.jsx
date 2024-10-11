@@ -15,7 +15,7 @@ export default function Cart() {
   async function getData(){
       if(auth.username){
         let user = auth.username.email.split('@')[0]+'_simran_cart'
-        let result = await axios.get(`https://actl.co.in/shop/getCart/${user}`)
+        let result = await axios.get(`https://actl.co.in/sikha/getCart/${user}`)
         let initialQuantities = {}
         result.data.forEach(item => {
           initialQuantities[item.id] = 1 // Initialize all quantities to 1
@@ -33,7 +33,7 @@ export default function Cart() {
     let flag = confirm("are u sure to delete")
     if(flag){
         let user = auth.username.email.split('@')[0]+'_simran_cart'
-    await axios.delete(`https://actl.co.in/shop/deleteCart/${id}/${user}`)
+    await axios.delete(`https://actl.co.in/sikha/deleteCart/${id}/${user}`)
     getData()
     }
   }

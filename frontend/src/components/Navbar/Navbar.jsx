@@ -66,7 +66,7 @@ export default function Navbar({ handleOrderPopup }) {
   const [order, setOrder] = useState('');
   const [category, setCategory] = useState([]);
   async function getCategory() {
-    let result = await axios.get('https://actl.co.in/shop/categoryget')
+    let result = await axios.get('https://actl.co.in/sikha/categoryget')
     setCategory(result.data)
 }
 useEffect(() => {
@@ -85,7 +85,7 @@ function handlelogout(){
 async function getData(){
   if(auth.username){
     let user = auth.username.email
-    let result = await axios.get(`https://actl.co.in/shop/getOrderByEmail/${user}`)
+    let result = await axios.get(`https://actl.co.in/sikha/getOrderByEmail/${user}`)
     setOrder(result.data)
   }
 }

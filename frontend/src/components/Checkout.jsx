@@ -35,7 +35,7 @@ export default function Checkout() {
 // console.log(orderData)
         try {
             // Post order data to backend
-            const response = await axios.post('https://actl.co.in/shop/createOrder', orderData)
+            const response = await axios.post('https://actl.co.in/sikha/createOrder', orderData)
             console.log('Order created:', response.data)
 
             // Clear cart after order is placed
@@ -54,7 +54,7 @@ export default function Checkout() {
         const currency = 'INR';
         const receiptId = '1234567890';
     
-        const response = await fetch('https://actl.co.in/shop/create-order', {
+        const response = await fetch('https://actl.co.in/sikha/create-order', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -82,7 +82,7 @@ export default function Checkout() {
               
               const body = {...response,}
     
-              const validateResponse = await fetch('https://actl.co.in/shop/verify-payment', {
+              const validateResponse = await fetch('https://actl.co.in/sikha/verify-payment', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

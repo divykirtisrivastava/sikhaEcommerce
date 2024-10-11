@@ -23,7 +23,7 @@ const ProductPage = () => {
 let {auth} = useContext(UserContext)
   async function getProfile() {
     try {
-      let result = await axios.get(`https://actl.co.in/shop/getProductByCode/${code}`);
+      let result = await axios.get(`https://actl.co.in/sikha/getProductByCode/${code}`);
       if (result) {
         let x = '';
         for (let i = 1; i <= result.data[0].productRating; i++) {
@@ -31,13 +31,13 @@ let {auth} = useContext(UserContext)
         }
         setStar(x);
         const final = result.data.map(item => {
-          if ((typeof item.productImages === 'string') && (typeof item.productSize === 'string')) {
+          if (typeof item.productImages === 'string') {
             return { ...item, productImages: JSON.parse(item.productImages), productSize: JSON.parse(item.productSize) };
           }
           return item;
         });
         setData(final[0]);
-        setMainImage(`https://actl.co.in/uploads/${final[0].productImages[0]}`); // Set the main image initially
+        setMainImage(`https://actl.co.in/sikha_uploads/${final[0].productImages[0]}`); // Set the main image initially
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -65,10 +65,10 @@ let {auth} = useContext(UserContext)
 
   async function getAllProfile() {
     try {
-      let result = await axios.get('https://actl.co.in/shop/getProduct');
+      let result = await axios.get('https://actl.co.in/sikha/getProduct');
       if(result){
         const final = result.data.map(item => {
-          if ((typeof item.productImages === 'string') && (typeof item.productSize === 'string')) {
+          if (typeof item.productImages === 'string') {
             return { ...item, productImages: JSON.parse(item.productImages),productSize: JSON.parse(item.productSize)  };
           }   
            return item;
@@ -87,10 +87,10 @@ let {auth} = useContext(UserContext)
  async function addCart(data){
   // if(size){
     if(auth.username){
-      let cartdata = {...data, productSize:size, productImages:mainImage}
+      let cartdata = {...data, productImages:mainImage}
     let user =  auth.username.email.split('@')[0]+'_simran_cart'
     // console.log(user)
-    await axios.post(`https://actl.co.in/shop/cartSave/${user}`,cartdata)
+    await axios.post(`https://actl.co.in/sikha/cartSave/${user}`,cartdata)
     navigation('/cart')
     }else{
       navigation('/signinsignup')
@@ -122,9 +122,9 @@ let {auth} = useContext(UserContext)
                 <img
                   key={index}
                   className="w-12 h-12 md:w-16 md:h-16 object-cover border cursor-pointer"
-                  src={`https://actl.co.in/uploads/${image}`}
+                  src={`https://actl.co.in/sikha_uploads/${image}`}
                   alt={`Product Thumbnail ${index + 1}`}
-                  onClick={() => handleThumbnailClick(`https://actl.co.in/uploads/${image}`)} // Set image as main on click
+                  onClick={() => handleThumbnailClick(`https://actl.co.in/sikha_uploads/${image}`)} // Set image as main on click
                 />
               ))}
             </div>
@@ -207,7 +207,7 @@ let {auth} = useContext(UserContext)
         {product.productImages.map(slide => (
           <SwiperSlide key={slide.id}>
             <img
-              src={`https://actl.co.in/uploads/${slide}`}
+              src={`https://actl.co.in/sikha_uploads/${slide}`}
               alt={`Slide ${slide.id}`}
               className="w-full h-72 object-fit"
             />

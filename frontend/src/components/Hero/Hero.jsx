@@ -43,7 +43,7 @@ export default function Hero({ handleOrderPopup }) {
 
   async function getProfile() {
     try {
-      let result = await axios.get('https://actl.co.in/shop/getbanner') || '';
+      let result = await axios.get('https://actl.co.in/sikha/getbanner') || '';
     //   console.log(result)
       if(result){
         setData(result.data);
@@ -60,11 +60,11 @@ export default function Hero({ handleOrderPopup }) {
   return (
   
       
-      <div className="w-full min-h-60 mx-auto">
+      <div className="w-full  mx-auto">
         <Slider {...settings}>
           { data &&data.map((item) => (
        <img
-       src={`https://actl.co.in/uploads/${item.banner}`}
+       src={`https://actl.co.in/sikha_uploads/${item.banner}`}
        alt={`Slide ${item.id}`}
        className="w-full h-40 md:h-96 lg:h-96 object-fit"
      />

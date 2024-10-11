@@ -32,7 +32,7 @@ const ProductsData = [
 export default function TopProducts({handleOrderPopup}){
   const [subcategory, setsubCategory] = useState([]);
   async function getsubCategory() {
-    let result = await axios.get('https://actl.co.in/shop/subcategoryget')
+    let result = await axios.get('https://actl.co.in/sikha/subcategoryget')
     setsubCategory(result.data)
     // console.log(result)
 }
@@ -66,7 +66,7 @@ console.log(subcategory)
       {/* image section */}
       <div className="h-[100px]">
         <img
-          src={`https://actl.co.in/uploads/${data.subcategoryImage}`}
+          src={`https://actl.co.in/sikha_uploads/${data.subcategoryImage}`}
           alt=""
           className={`block mx-auto transform -translate-y-20 group-hover:scale-105 duration-300 drop-shadow-md rounded-md w-[120px] h-[150px]`}
         />

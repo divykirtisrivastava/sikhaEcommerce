@@ -12,7 +12,7 @@ export default function YourOrder() {
   async function getData(){
       if(auth.username){
         let user = auth.username.email
-        let result = await axios.get(`https://actl.co.in/shop/getOrderByEmail/${user}`)
+        let result = await axios.get(`https://actl.co.in/sikha/getOrderByEmail/${user}`)
         setData(result.data)
       }
   }
@@ -25,7 +25,7 @@ console.log(data)
 //     let flag = confirm("are u sure to delete")
 //     if(flag){
 //         let user = auth.username.email.split('@')[0]+'_cart'
-//     await axios.delete(`https://actl.co.in/shop/deleteCart/${id}/${user}`)
+//     await axios.delete(`https://actl.co.in/sikha/deleteCart/${id}/${user}`)
 //     getData()
 //     }
 //   }

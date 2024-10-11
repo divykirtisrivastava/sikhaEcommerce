@@ -23,6 +23,22 @@ import SignInSignUpModal from "./components/SignInSignUpModal.jsx";
 import Checkout from "./components/Checkout.jsx";
 import YourOrder from "./components/YourOrder.jsx";
 import PaymentSuccess from "./components/PaymentSuccess.jsx";
+import AdminApp from "./AdminApp.jsx";
+import AdminProtected from "./dashboard/AdminProtected.jsx";
+import DashboardShow from "./dashboard/DashboardShow.jsx";
+import Category from "./dashboard/Category.jsx";
+import Users from "./dashboard/Users.jsx";
+import AddCategory from "./dashboard/AddCategory.jsx";
+import AddSubCategory from "./dashboard/AddSubCategory.jsx";
+import SubCategory from "./dashboard/SubCategory.jsx";
+import Product from "./dashboard/Product.jsx";
+import AddProduct from "./dashboard/AddProduct.jsx";
+import ViewProduct from "./dashboard/ViewProduct.jsx";
+import UpdateProduct from "./dashboard/UpdateProduct.jsx";
+import Banner from "./dashboard/Banner.jsx";
+import AddBanner from "./dashboard/AddBanner.jsx";
+import Orders from "./dashboard/Orders.jsx";
+import AdminLogin from "./dashboard/AdminLogin.jsx";
 
 let router = createBrowserRouter(
   createRoutesFromElements(
@@ -48,6 +64,23 @@ let router = createBrowserRouter(
         <Route path='/yourorder' element={<YourOrder/>}/>
         <Route path='/payment_seccess' element={<PaymentSuccess/>}/>
         </Route>
+
+    <Route path='/admin' element={<AdminApp/>}>
+    <Route path='/admin' element={<AdminProtected><DashboardShow/></AdminProtected>}/>
+    <Route path='/admin/category' element={<Category/>}/>
+    <Route path='/admin/users' element={<Users/>}/>
+    <Route path='/admin/newcategory' element={<AddCategory/>}/>
+    <Route path='/admin/newsubcategory' element={<AddSubCategory/>}/>
+    <Route path='/admin/subcategory' element={<SubCategory/>}/>
+    <Route path='/admin/product' element={<Product/>}/>
+    <Route path='/admin/newproduct' element={<AddProduct/>}/>
+    <Route path='/admin/view/:id' element={<ViewProduct/>}/>
+    <Route path='/admin/update/:id' element={<UpdateProduct/>}/>
+    <Route path='/admin/banner' element={<Banner/>}/>
+    <Route path='/admin/newbanner' element={<AddBanner/>}/>
+    <Route path='/admin/orders' element={<Orders/>}/>
+    <Route path='/admin/adminlogin' element={<AdminLogin/>}/>
+    </Route>
     </>
   )
 )

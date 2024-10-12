@@ -1,3 +1,4 @@
+
 let db  = require('../databaseConfig.js')
 const path = require('path');
 const bcrypt = require('bcryptjs');
@@ -12,9 +13,8 @@ exports.clientSave = async (req, res)=>{
     let name = req.body.name
     let email = req.body.email
     let password = req.body.password
-    let hash = await bcrypt.hash(password, 10)
 
-    let value = [[name,email, hash]]
+    let value = [[name,email, password]]
 
     let sql  = 'insert into clientlist(name,email, password) values ?'
 
@@ -29,26 +29,19 @@ exports.clientSave = async (req, res)=>{
 exports.clientLogin = (req, res)=>{
     let email = req.body.email
     let password = req.body.password
-    db.query('select * from clientlist where email = ?', [email], async (err, result)=>{
-        if(err){}
+    db.query('select * from clientlist where email = ? and password = ?', [email, password], async (err, result)=>{
+        if(err) throw err
         else{
+            console.log(result)
           if(result.length> 0){
-            await  bcrypt.compare(password, result[0].password, async (err, isMatch)=>{
-                if(err) throw err
-                else{
-                    if(isMatch){
+          
                         let token = await generateToken(result[0])
                         let tname = result[0].email.split('@')[0]
                         // createUserWishListtable(tname)
                         createUserCartListtable(tname)
-                        res.json({token, tname, isMatch, result})
+                        res.json({token, tname, isMatch:true, result})
                     }
-                    else{
-                        res.json({isMatch})
-                    }
-                }
-            })
-          }else{
+                else{
             res.json({isMach:false})
           }
         }
@@ -82,7 +75,7 @@ exports.clientLogin = (req, res)=>{
 //       });
 // }
 function createUserCartListtable(tname){
-    let userwishlistTableQuery = `CREATE TABLE IF NOT EXISTS \`${tname}_sikha_cart\` (
+    let userwishlistTableQuery = `CREATE TABLE IF NOT EXISTS \`${tname}_simran_cart\` (
     id INT NOT NULL AUTO_INCREMENT,
     productTitle VARCHAR(255) NULL,
     productName VARCHAR(255) NULL,

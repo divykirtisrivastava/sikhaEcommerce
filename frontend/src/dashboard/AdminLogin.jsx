@@ -44,6 +44,7 @@ const AdminLogin = () => {
     e.preventDefault();
     if (validate()) {
         let result = await axios.post('https://actl.co.in/sikha/adminlogin', formData)
+        // console.log(result)
       if(result.data == true) {
           setAdminFlag(true)
           navigation('/admin')

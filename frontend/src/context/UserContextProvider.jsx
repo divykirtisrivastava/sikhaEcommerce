@@ -23,6 +23,7 @@ export default function UserContextProvider({children}) {
         // console.log(email)
         // console.log(password)
     let result = await axios.post('https://actl.co.in/shop/userlogin', {email, password})
+    console.log(result)
     if(result.data.isMatch){
         localStorage.setItem('token', result.data.token)
         setAuth({token:result.data.token, isAuthenized: true, username: result.data.result[0] })

@@ -58,7 +58,7 @@ const SignInSignUpModal = () => {
           // Handle login submission
           console.log(formData.email)
           let result = await userLogin(formData.email, formData.password)
-          console.log('Login data:', formData);
+          // console.log('Login data:', formData);
           if(result){
             navigation('/')
             setFlag(true)

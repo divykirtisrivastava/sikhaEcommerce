@@ -13,8 +13,9 @@ exports.clientSave = async (req, res)=>{
     let name = req.body.name
     let email = req.body.email
     let password = req.body.password
+    let hash = await bcrypt.hash(password, 10)
 
-    let value = [[name,email, password]]
+    let value = [[name,email, hash]]
 
     let sql  = 'insert into clientlist(name,email, password) values ?'
 
@@ -29,19 +30,26 @@ exports.clientSave = async (req, res)=>{
 exports.clientLogin = (req, res)=>{
     let email = req.body.email
     let password = req.body.password
-    db.query('select * from clientlist where email = ? and password = ?', [email, password], async (err, result)=>{
+    db.query('select * from clientlist where email = ?', [email], async (err, result)=>{
         if(err) throw err
         else{
-            console.log(result)
           if(result.length> 0){
-          
+            await  bcrypt.compare(password, result[0].password, async (err, isMatch)=>{
+                if(err) throw err
+                else{
+                    if(isMatch){
                         let token = await generateToken(result[0])
                         let tname = result[0].email.split('@')[0]
                         // createUserWishListtable(tname)
                         createUserCartListtable(tname)
-                        res.json({token, tname, isMatch:true, result})
+                        res.json({token, tname, isMatch, result})
                     }
-                else{
+                    else{
+                        res.json({isMatch})
+                    }
+                }
+            })
+          }else{
             res.json({isMach:false})
           }
         }
@@ -111,7 +119,6 @@ exports.verify =async (req, res)=>{
                 db.query("select * from clientlist where id = ?", [decode.id], (err, result)=>{
                     if(err) throw err
                     else{
-                        console.log(result)
                         res.json(result[0])
                     }
                 })

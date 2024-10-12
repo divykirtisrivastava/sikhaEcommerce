@@ -22,7 +22,7 @@ export default function UserContextProvider({children}) {
     let userLogin = async (email, password)=>{
         // console.log(email)
         // console.log(password)
-    let result = await axios.post('https://actl.co.in/shop/userlogin', {email, password})
+    let result = await axios.post('https://actl.co.in/sikha/userlogin', {email, password})
     console.log(result)
     if(result.data.isMatch){
         localStorage.setItem('token', result.data.token)
@@ -60,7 +60,7 @@ export default function UserContextProvider({children}) {
        try {
         let token = localStorage.getItem('token')
         if(token){
-            let result = await axios.post('https://actl.co.in/shop/userverify',
+            let result = await axios.post('https://actl.co.in/sikha/userverify',
                 {},
                 {
                   headers: { 'Authorization': `Bearer ${token}` },
@@ -106,31 +106,31 @@ export default function UserContextProvider({children}) {
 
     }, [])
 // console.log(flag)
-    let paymentStatusUpdate = async (flag)=>{
-        if(flag){
-            let paymentStatus = "paid"
-            let email = adminAuth.adminName.email
-            let result  = await axios.put(`http://localhost:3000/api/updatepaymentstatus/${email}/${paymentStatus}`)
-            if(result.data == true){
-                return true
-            }else{
-                return false
-            }
-        }
-    }
+    // let paymentStatusUpdate = async (flag)=>{
+    //     if(flag){
+    //         let paymentStatus = "paid"
+    //         let email = adminAuth.adminName.email
+    //         let result  = await axios.put(`http://localhost:3000/api/updatepaymentstatus/${email}/${paymentStatus}`)
+    //         if(result.data == true){
+    //             return true
+    //         }else{
+    //             return false
+    //         }
+    //     }
+    // }
 
-    let checkPayment = async (email)=>{
-        let result = await axios.get(`http://localhost:3000/api/checkpaymentstatus/${email}`)
-        if(result.data == true){
-            return true
-        }else{
-            return false
-        }
-    }
+    // let checkPayment = async (email)=>{
+    //     let result = await axios.get(`http://localhost:3000/api/checkpaymentstatus/${email}`)
+    //     if(result.data == true){
+    //         return true
+    //     }else{
+    //         return false
+    //     }
+    // }
 
     // console.log(auth)
   return (
-   <UserContext.Provider value={{auth, userLogin, logout, cartList, setCartList, flag, setFlag, haveAdmin, setHaveAdmin, paymentStatusUpdate, checkPayment, adminflag, setAdminFlag}}>
+   <UserContext.Provider value={{auth, userLogin, logout, cartList, setCartList, flag, setFlag, haveAdmin, setHaveAdmin, adminflag, setAdminFlag}}>
     {children}
    </UserContext.Provider>
   )

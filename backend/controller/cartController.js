@@ -2,7 +2,7 @@ const db= require('../databaseConfig.js')
 
 exports.cartSave=(req,res)=>{
     let user = req.params.user
-    const { productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productDiscount, productCode, productSize, productImages } = req.body;
+    const { productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productDiscount, productCode, productPrice, productImages } = req.body;
 
     // Insert product into the database
     const sql = `INSERT INTO ${user} (productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productPrice, productDiscount, productCode, productImages)

@@ -83,7 +83,7 @@ exports.clientLogin = (req, res)=>{
 //       });
 // }
 function createUserCartListtable(tname){
-    let userwishlistTableQuery = `CREATE TABLE IF NOT EXISTS \`${tname}_simran_cart\` (
+    let userwishlistTableQuery = `CREATE TABLE IF NOT EXISTS \`${tname}_sikha_cart\` (
     id INT NOT NULL AUTO_INCREMENT,
     productTitle VARCHAR(255) NULL,
     productName VARCHAR(255) NULL,

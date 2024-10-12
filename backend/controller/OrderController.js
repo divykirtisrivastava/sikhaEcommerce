@@ -9,8 +9,8 @@ exports.createOrder = async (req, res) => {
     // Insert each item into the single orders table
     for (const item of items) {
       await db.query(`
-        INSERT INTO orders (customer_address, customer_phone, customer_email, payment_method, product_id, product_title, quantity, product_price, product_discount, total_price)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        INSERT INTO orders (customer_address, customer_phone, customer_email, payment_method, product_id, product_title, quantity, product_price, product_discount, total_price, productImage)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
           address,
           phone,
@@ -21,7 +21,8 @@ exports.createOrder = async (req, res) => {
           item.quantity,
           item.productPrice,
           item.productDiscount,
-          item.totalPrice
+          item.totalPrice,
+          item.productImage
         ]
       )
     }

@@ -98,6 +98,7 @@ export default function UserContextProvider({children}) {
     useEffect(()=>{
         let token = localStorage.getItem('token')
         if(token){
+            // setFlag(true)
             profile()
         }else{
             logout()

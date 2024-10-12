@@ -16,6 +16,7 @@ export default function Cart() {
       if(auth.username){
         let user = auth.username.email.split('@')[0]+'_sikha_cart'
         let result = await axios.get(`https://actl.co.in/sikha/getCart/${user}`)
+        // console.log(result)
         let initialQuantities = {}
         result.data.forEach(item => {
           initialQuantities[item.id] = 1 // Initialize all quantities to 1
@@ -27,7 +28,7 @@ export default function Cart() {
 
   useEffect(()=>{
       getData()
-  },[])
+  },[auth.username])
 
   async function  deleteCart(id) {
     let flag = confirm("are u sure to delete")
@@ -70,6 +71,7 @@ export default function Cart() {
    localStorage.setItem('cartData', JSON.stringify(cartData))
    navigation('/checkout')
   }
+  // console.log(data)
 // console.log(data)
   return (
 

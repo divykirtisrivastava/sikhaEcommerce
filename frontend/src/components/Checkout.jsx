@@ -9,7 +9,7 @@ export default function Checkout() {
     const [address, setAddress] = useState('')
     const [phone, setPhone] = useState('')
     let email = auth.username.email
-    const [paymentMethod, setPaymentMethod] = useState('Cash on Delivery')
+    const [paymentMethod, setPaymentMethod] = useState('Online Method')
     let navigate = useNavigate()
     // Load cart data from localStorage
     useEffect(() => {
@@ -129,6 +129,8 @@ export default function Checkout() {
           rzp1.open();
           event.preventDefault();
       };
+
+      console.log(cartData)
     return (
         <div className="container mx-auto py-12">
             <h2 className="text-2xl text-center font-bold mb-6">Checkout</h2>
@@ -174,7 +176,6 @@ export default function Checkout() {
                         <div className="space-y-2">
                             <label className="block font-medium text-gray-700">Payment Method</label>
                             <select
-                                value={paymentMethod}
                                 onChange={(e) => setPaymentMethod(e.target.value)}
                                 className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                             >

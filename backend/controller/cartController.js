@@ -2,13 +2,13 @@ const db= require('../databaseConfig.js')
 
 exports.cartSave=(req,res)=>{
     let user = req.params.user
-    const { productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productPrice, productDiscount, productCode, productSize, productImages } = req.body;
+    const { productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productDiscount, productCode, productSize, productImages } = req.body;
 
     // Insert product into the database
-    const sql = `INSERT INTO ${user} (productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productPrice, productDiscount, productCode, productSize, productImages)
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    const sql = `INSERT INTO ${user} (productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productPrice, productDiscount, productCode, productImages)
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
   
-    db.query(sql, [productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productPrice, productDiscount, productCode, productSize, productImages], (err, result) => {
+    db.query(sql, [productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productPrice, productDiscount, productCode, productImages], (err, result) => {
       if (err) {
         console.error(err);
         return res.status(500).json({ message: 'Database insertion error' });

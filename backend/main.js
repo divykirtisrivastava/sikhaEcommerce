@@ -64,6 +64,7 @@ id INT AUTO_INCREMENT PRIMARY KEY,
   product_price DECIMAL(10, 2) NOT NULL,
   product_discount DECIMAL(5, 2),
   total_price DECIMAL(10, 2) NOT NULL,
+  productImage TEXT,
   status VARCHAR(255) default 'pending',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

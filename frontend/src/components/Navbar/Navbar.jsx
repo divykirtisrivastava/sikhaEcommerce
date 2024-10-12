@@ -129,7 +129,7 @@ useEffect(()=>{
                 value={inp}
                 onChange={(e)=>setInp(e.target.value)}
               />
-              {auth.username ? <div className='flex items-center gap-6'><span className='uppercase text-2xl font-bold flex items-center gap-2'> <FaUser className="text-primary dark:text-white text-2xl cursor-pointer" /> {auth.username.name}</span><button className='p-2 rounded-lg bg-primary text-white font-[600]' onClick={handlelogout}>Logout</button></div> :  <Link to="/signinsignup" className="text-gray-800 hover:text-blue-600">
+              {auth.username ? <div className='flex items-center gap-6'><span className='uppercase text-2xl font-bold flex items-center gap-2'> <FaUser className="text-primary dark:text-white text-2xl cursor-pointer" /> {auth.username.name}</span><button className='p-2 rounded-lg bg-primary text-white font-[600]' onClick={handlelogout}>Logout</button></div> :  <Link to="/signinsignup" className="p-2 rounded-lg bg-primary text-white font-[600]">
               Sign In/Sign Up
             </Link>}
              

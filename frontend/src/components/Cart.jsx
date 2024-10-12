@@ -32,7 +32,7 @@ export default function Cart() {
   async function  deleteCart(id) {
     let flag = confirm("are u sure to delete")
     if(flag){
-        let user = auth.username.email.split('@')[0]+'_sikha_cart'
+        let user = auth.username.email.split('@')[0]
     await axios.delete(`https://actl.co.in/sikha/deleteCart/${id}/${user}`)
     getData()
     }

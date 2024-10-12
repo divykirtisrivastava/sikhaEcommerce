@@ -88,7 +88,7 @@ let {auth} = useContext(UserContext)
   // if(size){
     if(auth.username){
       let cartdata = {...data, productImages:mainImage}
-    let user =  auth.username.email.split('@')[0]+'_sikha_cart'
+    let user =  auth.username.email.split('@')[0] + '_sikha_cart'
     // console.log(user)
     await axios.post(`https://actl.co.in/sikha/cartSave/${user}`,cartdata)
     navigation('/cart')

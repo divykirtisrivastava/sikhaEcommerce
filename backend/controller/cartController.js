@@ -5,7 +5,7 @@ exports.cartSave=(req,res)=>{
     const { productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productPrice, productDiscount, productCode, productSize, productImages } = req.body;
 
     // Insert product into the database
-    const sql = `INSERT INTO ${user}_sikha_cart (productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productPrice, productDiscount, productCode, productSize, productImages)
+    const sql = `INSERT INTO ${user} (productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productPrice, productDiscount, productCode, productSize, productImages)
                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
   
     db.query(sql, [productTitle, productName, productRating, productDetail, productCategory, productSubCategory, productPrice, productDiscount, productCode, productSize, productImages], (err, result) => {
@@ -19,7 +19,7 @@ exports.cartSave=(req,res)=>{
 
 exports.getCart = (req, res)=>{
     let user = req.params.user
-    let sql = `select * from ${user}_sikha_cart`
+    let sql = `select * from ${user}`
     db.query(sql, (err, result)=>{
         if(err) throw err
         else{
@@ -31,7 +31,7 @@ exports.getCart = (req, res)=>{
 exports.deleteCart = (req, res)=>{
     let id = req.params.id
     let user = req.params.user
-    let sql = `delete from ${user}_sikha_cart where id = ?`
+    let sql = `delete from ${user} where id = ?`
 
     db.query(sql, [id], (err, result)=>{
         if(err) throw err

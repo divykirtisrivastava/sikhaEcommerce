@@ -40,6 +40,7 @@ export default function Orders() {
     getProfile()
     }
   }
+  console.log(data)
   return (
     <>
     <AdminNav/>

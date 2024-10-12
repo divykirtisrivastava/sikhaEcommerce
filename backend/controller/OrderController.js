@@ -22,7 +22,7 @@ exports.createOrder = async (req, res) => {
           item.productPrice,
           item.productDiscount,
           item.totalPrice,
-          item.productImage
+          item.productImages
         ]
       )
     }

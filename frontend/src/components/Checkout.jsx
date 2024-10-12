@@ -35,7 +35,8 @@ export default function Checkout() {
 // console.log(orderData)
         try {
             // Post order data to backend
-            const response = await axios.post('https://actl.co.in/sikha/createOrder', orderData)
+            let tname = auth.username.email.split("@")[0] + "_sikha_cart"
+            const response = await axios.post(`https://actl.co.in/sikha/createOrder/${tname}`, orderData)
             console.log('Order created:', response.data)
 
             // Clear cart after order is placed

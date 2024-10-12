@@ -2,7 +2,7 @@ const db = require('../databaseConfig.js')
 
 exports.createOrder = async (req, res) => {
   const { items, customerDetails } = req.body
-let tname = rea.params.tname
+let tname = req.params.tname
 
   try {
     const { address, phone, email, paymentMethod } = customerDetails

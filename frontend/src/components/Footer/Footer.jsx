@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import footerLogo from "../../assets/website/logo.jfif";
 import Banner from "../../assets/website/footer-pattern.jpg";
 import {
@@ -7,6 +8,7 @@ import {
   FaLinkedin,
   FaLocationArrow,
   FaMobileAlt,
+  FaEnvelope, // Importing the email icon
 } from "react-icons/fa";
 
 const BannerImg = {
@@ -17,29 +19,6 @@ const BannerImg = {
   height: "100%",
   width: "100%",
 };
-
-const FooterLinks = [
-  {
-    title: "Home",
-    link: "/#",
-  },
-  {
-    title: "About",
-    link: "/about",
-  },
-  {
-    title: "Contact",
-    link: "/contact",
-  },
-  {
-    title: "Return Policy",
-    link: "/return",
-  },
-  {
-    title: "Shipping",
-    link: "/shipping",
-  },
-];
 
 export default function Footer() {
   return (
@@ -57,8 +36,8 @@ export default function Footer() {
             </h1>
 
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum in
-              beatae ea recusandae blanditiis veritatis.
+              {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum in
+              beatae ea recusandae blanditiis veritatis. */}
             </p>
           </div>
 
@@ -68,17 +47,24 @@ export default function Footer() {
             <div>
               <div className="py-8 px-4">
                 <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
-                  Important Links
+                  Information
                 </h1>
                 <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link) => (
-                    <li
-                      className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200"
-                      key={link.title}
-                    >
-                      <a href={link.link}>{link.title}</a> {/* Added href for functional links */}
-                    </li>
-                  ))}
+                  <li className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                    <Link to="/about">About Us</Link>
+                  </li>
+                  <li className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                    <Link to="/">Necklace Sets</Link>
+                  </li>
+                  <li className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                    <Link to="/about">Earrings</Link>
+                  </li>
+                  <li className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                    <Link to="/about">Bracelets</Link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -87,17 +73,26 @@ export default function Footer() {
             <div>
               <div className="py-8 px-4">
                 <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
-                  Links
+                  Support
                 </h1>
                 <ul className="flex flex-col gap-3">
-                  {FooterLinks.map((link) => (
-                    <li
-                      className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200"
-                      key={link.title}
-                    >
-                      <a href={link.link}>{link.title}</a> {/* Added href for functional links */}
-                    </li>
-                  ))}
+                  <li className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                    <Link to="/contact">Contact Us</Link>
+                  </li>
+                  <li className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                    <Link to="/privacy">Privacy Policy</Link>
+                  </li>
+                  <li className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                    <Link to="/shipping">Shipping And Delivery</Link>
+                  </li>
+                  <li className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                    <Link to="/return">Cancellation & Refund Policy</Link>
+                  </li>
+                  <li className="cursor-pointer hover:text-primary hover:translate-x-1 duration-300 text-gray-200">
+                    <Link to="/terms">Terms And Conditions</Link>
+                  </li>
+                 
+                  
                 </ul>
               </div>
             </div>
@@ -109,14 +104,22 @@ export default function Footer() {
                   Connect with us
                 </h1>
                 <div className="flex items-center gap-3 mt-6">
-                  <a href="https://www.instagram.com/alankaar_the_art_of_beads?utm_source=qr&igsh=MW9ocWFoaDF4M212bw==">
+                  <a href="mailto:shikha.b79@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <FaEnvelope className="text-3xl" /> {/* Email icon */}
+                  </a>
+                  <a
+                    href="https://www.instagram.com/alankaar_the_art_of_beads?utm_source=qr&igsh=MW9ocWFoaDF4M212bw=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaInstagram className="text-3xl" />
                   </a>
-                  <a href="https://www.facebook.com/share/iGTQXELidLDFrxsW/">
+                  <a
+                    href="https://www.facebook.com/share/iGTQXELidLDFrxsW/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaFacebook className="text-3xl" />
-                  </a>
-                  <a href="#">
-                    <FaLinkedin className="text-3xl" />
                   </a>
                 </div>
                 <div className="mt-6">

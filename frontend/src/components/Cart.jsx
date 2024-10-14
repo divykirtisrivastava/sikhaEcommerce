@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import UserContextProvider from '../context/UserContextProvider'
 import Navbar from './Navbar/Navbar'
 import Footer from './Footer/Footer'
+import img from '../assets/not-found.png'
 
 export default function Cart() {
   let {auth} = useContext(UserContext)
@@ -33,9 +34,10 @@ export default function Cart() {
   async function  deleteCart(id) {
     let flag = confirm("are u sure to delete")
     if(flag){
-        let user = auth.username.email.split('@')[0]
+        let user = auth.username.email.split('@')[0]+'_sikha_cart'
     await axios.delete(`https://actl.co.in/sikha/deleteCart/${id}/${user}`)
     getData()
+    window.location.reload()
     }
   }
 
@@ -72,10 +74,11 @@ export default function Cart() {
    navigation('/checkout')
   }
   // console.log(data)
-// console.log(data)
+console.log(data)
   return (
 
-      <div>
+     <>
+     {data.length >0 ?  <div>
       <section class="bg-white py-8 antialiased dummy:bg-gray-900 md:py-16">
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <h2 class="text-xl font-semibold text-gray-900 dummy:text-white sm:text-2xl">Shopping Cart</h2>
@@ -179,7 +182,13 @@ export default function Cart() {
           </div>
         </div>
       </section>
-    </div>
+    </div> 
+    :
+    <div className='h-screen w-full bg-white flex flex-col items-center mt-10 gap-5'>
+      <img src={img} alt="" />
+      <h1 className='text-3xl font-bold'>Your Cart is Empty</h1>
+    </div>}
+     </>
     
   )
 }

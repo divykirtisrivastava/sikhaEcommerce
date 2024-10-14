@@ -10,6 +10,7 @@ const cartRoute = require('./routes/cartRoute.js')
 const paymentRoute= require('./routes/paymentRoute.js')
 const orderRoute= require('./routes/orderRoute.js')
 const adminRoute= require('./routes/adminRoute.js')
+const wishRoute= require('./routes/wishRoute.js')
 const path = require('path');
 
 
@@ -159,6 +160,7 @@ app.use('/sikha',cartRoute)
 app.use('/sikha', paymentRoute)
 app.use('/sikha', orderRoute)
 app.use('/sikha', adminRoute)
+app.use('/sikha', wishRoute)
 
 app.listen(4222,()=>{
     console.log(`server is running on ${process.env.PORT}`)

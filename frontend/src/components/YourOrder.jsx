@@ -65,7 +65,7 @@ console.log(data)
 // console.log(data)
   return (
     <div>
-      <section class="bg-white py-8 antialiased dummy:bg-gray-900 md:py-16">
+      <section class="bg-white py-8 antialiased dummy:bg-gray-900 md:py-16 h-screen">
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
           <h2 class="text-xl font-semibold text-gray-900 dummy:text-white sm:text-2xl">Your Orders</h2>
 

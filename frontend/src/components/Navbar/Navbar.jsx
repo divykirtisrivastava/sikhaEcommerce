@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Logo from "../../assets/logoshikha.png";
 import { IoMdSearch } from "react-icons/io";
-import { FaCartShopping, FaUser, FaHeart, FaBars } from "react-icons/fa6";
+import { FaCartShopping, FaUser, FaHeart, FaBars, FaBagShopping } from "react-icons/fa6";
 import { FaCaretDown } from "react-icons/fa";
 import {Link, useNavigate} from 'react-router-dom'
 import UserContext from "../../context/UserContext";
@@ -86,14 +86,15 @@ async function getData(){
   if(auth.username){
     let user = auth.username.email
     let result = await axios.get(`https://actl.co.in/sikha/getOrderByEmail/${user}`)
+    // console.log(result)
     setOrder(result.data)
   }
 }
 
 useEffect(()=>{
   getData()
-},[])
-// console.log(category)
+},[auth.username])
+console.log(order)
   return (
     <div className="shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
       {/* Upper Navbar */}
@@ -136,17 +137,28 @@ useEffect(()=>{
               {/* <FaHeart className="text-secondary dark:text-red-400 text-2xl cursor-pointer" /> */}
             </div>
 
-            {/* Order button */}
+            {/* Cart button */}
             <Link
             to="/cart"
               // onClick={handleOrderPopup} // Directly call the function
               className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3 group"
             >
               <span className="group-hover:block hidden transition-all duration-200">
-                Order
+                Cart
               </span>
               <FaCartShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
             </Link>
+            {/* Order button */}
+            {order.length > 0 ? <Link
+            to="/yourorder"
+              // onClick={handleOrderPopup} // Directly call the function
+              className="bg-gradient-to-r from-primary to-secondary transition-all duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3 group"
+            >
+              <span className="group-hover:block hidden transition-all duration-200">
+                Orders
+              </span>
+              <FaBagShopping className="text-xl text-white drop-shadow-sm cursor-pointer" />
+            </Link> : ''}
           </div>
         </div>
       </div>

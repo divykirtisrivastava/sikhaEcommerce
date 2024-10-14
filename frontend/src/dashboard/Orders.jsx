@@ -40,13 +40,12 @@ export default function Orders() {
     getProfile()
     }
   }
-  console.log(data)
+  // console.log(data)
   return (
     <>
     <AdminNav/>
     <AdminSidebar/>
     <div className='absolute flex flex-col items-center w-[80%] left-[20%] top-20'>
-     
       <div className="h-auto w-full rounded-lg bg-pink-100">
       <h1 className="text-3xl font-bold mb-6 text-center">Orders List</h1>
       <div className="overflow-x-auto">
@@ -60,6 +59,7 @@ export default function Orders() {
             <th className="py-2 px-4 bg-gray-200 font-bold text-left">payment_method</th>
             <th className="py-2 px-4 bg-gray-200 font-bold text-left">product_id</th>
             <th className="py-2 px-4 bg-gray-200 font-bold text-left">product_title</th>
+            <th className="py-2 px-4 bg-gray-200 font-bold text-left">product_image</th>
             <th className="py-2 px-4 bg-gray-200 font-bold text-left">quantity</th>
             <th className="py-2 px-4 bg-gray-200 font-bold text-left">product_price</th>
             <th className="py-2 px-4 bg-gray-200 font-bold text-left">total_price</th>
@@ -77,6 +77,7 @@ export default function Orders() {
               <td className="py-2 px-4">{product.payment_method}</td>
               <td className="py-2 px-4">{product.product_id}</td>
               <td className="py-2 px-4">{product.product_title}</td>
+              <td className="py-2 px-4"><img src={product.productImage} alt="" /></td>
               <td className="py-2 px-4">{product.quantity}</td>
               <td className="py-2 px-4">{product.product_price}</td>
               <td className="py-2 px-4">{product.total_price}</td>

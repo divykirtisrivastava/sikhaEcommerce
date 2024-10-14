@@ -40,7 +40,7 @@ exports.clientLogin = (req, res)=>{
                     if(isMatch){
                         let token = await generateToken(result[0])
                         let tname = result[0].email.split('@')[0]
-                        // createUserWishListtable(tname)
+                        createUserWishListtable(tname)
                         createUserCartListtable(tname)
                         res.json({token, tname, isMatch, result})
                     }
@@ -56,32 +56,32 @@ exports.clientLogin = (req, res)=>{
     })
 }
 
-// function createUserWishListtable(tname){
-//     let userwishlistTableQuery = `CREATE TABLE IF NOT EXISTS \`${tname}_simran_wish\` (
-//     id INT NOT NULL AUTO_INCREMENT,
-//     productTitle VARCHAR(255) NULL,
-//     productName VARCHAR(255) NULL,
-//     productRating INT NULL,
-//     productDetail TEXT NULL,
-//     productCategory VARCHAR(255) NULL,
-//     productSubCategory VARCHAR(255) NULL,
-//     productPrice INT NULL, 
-//     productDiscount INT NULL,
-//     productCode VARCHAR(255) NULL,
-//     productSize VARCHAR(255) NULL, 
-//     productImages TEXT NULL, 
-//     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-//     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-//     PRIMARY KEY (id)  -- Add this line to make the id the primary key
-// );`
+function createUserWishListtable(tname){
+    let userwishlistTableQuery = `CREATE TABLE IF NOT EXISTS \`${tname}_sikha_wish\` (
+    id INT NOT NULL AUTO_INCREMENT,
+    productTitle VARCHAR(255) NULL,
+    productName VARCHAR(255) NULL,
+    productRating INT NULL,
+    productDetail TEXT NULL,
+    productCategory VARCHAR(255) NULL,
+    productSubCategory VARCHAR(255) NULL,
+    productPrice INT NULL, 
+    productDiscount INT NULL,
+    productCode VARCHAR(255) NULL,
+    productSize VARCHAR(255) NULL, 
+    productImages TEXT NULL, 
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)  -- Add this line to make the id the primary key
+);`
       
-//       db.query(userwishlistTableQuery, (err, result) => {
-//         if (err) throw err;
-//         else {
-//           console.log("userwishlist table created");
-//         }
-//       });
-// }
+      db.query(userwishlistTableQuery, (err, result) => {
+        if (err) throw err;
+        else {
+          console.log("userwishlist table created");
+        }
+      });
+}
 function createUserCartListtable(tname){
     let userwishlistTableQuery = `CREATE TABLE IF NOT EXISTS \`${tname}_sikha_cart\` (
     id INT NOT NULL AUTO_INCREMENT,

@@ -149,7 +149,20 @@ let clientTableQuery = `CREATE TABLE if not exists clientlist (
       console.log("clientlist table created");
     }
   });
-
+  let popupQuery=`
+  CREATE TABLE IF NOT EXISTS popup_table(
+  id INT NOT NULL AUTO_INCREMENT,
+  heading VARCHAR(255) NULL,
+  detail TEXT,
+  status VARCHAR(255) default 'on',
+  PRIMARY KEY (id));
+  `
+  db.query(popupQuery, (err, result)=>{
+      if(err) throw err
+      else{
+          console.log("popup_table table created successfull")
+      }
+  })
 
 app.use('/sikha',productRoute)
 app.use('/sikha',bannerRoute)

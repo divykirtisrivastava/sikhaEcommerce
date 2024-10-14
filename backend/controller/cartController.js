@@ -42,10 +42,9 @@ exports.deleteCart = (req, res)=>{
 }
 
 
-exports.viewCart = (req,res)=>{
-    let id = req.params.id
-    let sql = "select * from cart_table where id = ?"
-    db.query(sql, [id], (err, result)=>{
+exports.viewpopup = (req,res)=>{
+    let sql = "select * from popup_table"
+    db.query(sql,(err, result)=>{
         if(err) throw err
         else{
             res.json(result)
@@ -53,14 +52,26 @@ exports.viewCart = (req,res)=>{
     })
 }
 
-exports.updateCart = (req, res)=>{
+exports.updatepopup = (req, res)=>{
     let id = req.params.id
     let newData = req.body
-    let sql = 'update cart_table set  ? where id = ?'
+    let sql = 'update popup_table set  ? where id = 1'
     db.query(sql, [newData, id], (err, result)=>{
         if(err) throw err
         else{
             res.send('cart data updated')
+        }
+    })
+}
+exports.savepopup = (req, res)=>{
+    let heading = req.body.heading
+    let detail = req.body.detail
+    let value = [[heading, detail]]
+    let sql = 'insert into popup_table(heading, detail) values ?'
+    db.query(sql, [value], (err, result)=>{
+        if(err) throw err
+        else{
+            res.send('popup data saved')
         }
     })
 }
